@@ -1,0 +1,16 @@
+﻿<Window x:Class="HuynhDucKhanhWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HuynhDucKhanhWPF"
+        mc:Ignorable="d"
+        Title="SE180719 - Huỳnh Đức Khánh" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnCustomer" Content="Manage Customers" HorizontalAlignment="Left" Margin="201,49,0,0" VerticalAlignment="Top" FontSize="30" Width="387" Click="btnCustomer_Click" />
+        <Button x:Name="btnProduct" Content="Manage Products" HorizontalAlignment="Left" Margin="201,130,0,0" VerticalAlignment="Top" FontSize="30" Width="387" Click="btnProduct_Click"/>
+        <Button x:Name="btnOrders" Content="Create and View Orders" HorizontalAlignment="Left" Margin="201,0,0,0" VerticalAlignment="Center" FontSize="30" Width="387" Click="btnOrders_Click"/>
+        <Button x:Name="btnReports" Content="Reports" HorizontalAlignment="Left" Margin="201,265,0,0" VerticalAlignment="Top" FontSize="30" Width="387" Click="btnReports_Click"/>
+
+    </Grid>
+</Window>

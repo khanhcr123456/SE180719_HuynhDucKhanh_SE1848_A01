@@ -1,0 +1,85 @@
+﻿<Window x:Class="HuynhDucKhanhWPF.CustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Customer Window" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <TabControl>
+
+            <!-- 🧾 Order History -->
+            <TabItem Header="Order History">
+                <DataGrid x:Name="dgOrderHistory"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          Margin="10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Order ID" Binding="{Binding OrderID}" Width="100"/>
+                        <DataGridTextColumn Header="Order Date" Binding="{Binding OrderDate}" Width="150"/>
+                        <DataGridTextColumn Header="Total" Binding="{Binding TotalAmount, StringFormat={}{0:N0} VNĐ}" Width="150"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <!-- 👤 Profile -->
+            <TabItem Header="Profile">
+                <StackPanel Margin="10" Width="300">
+                    <TextBlock Text="Contact Name" />
+                    <TextBox x:Name="txtContactName" />
+
+                    <TextBlock Text="Address" Margin="0,10,0,0" />
+                    <TextBox x:Name="txtAddress" />
+
+                    <TextBlock Text="Phone" Margin="0,10,0,0" />
+                    <TextBox x:Name="txtPhone" IsEnabled="False" />
+
+                    <Button Content="Update Profile" Margin="0,20,0,0" Click="btnUpdateProfile_Click" Width="150"/>
+                </StackPanel>
+            </TabItem>
+
+            <!-- 🏠 Manage Rooms -->
+            <TabItem Header="Manage Rooms">
+                <StackPanel Margin="10">
+
+                    <!-- Search textbox with placeholder -->
+                    <Grid Width="200" Height="30" Margin="0,0,0,10">
+                        <TextBox x:Name="txtRoomSearch"
+                                 VerticalContentAlignment="Center"
+                                 TextChanged="txtRoomSearch_TextChanged" />
+                        <TextBlock x:Name="txtPlaceholder"
+                                   Text="Search room..."
+                                   Foreground="Gray"
+                                   Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   IsHitTestVisible="False"
+                                   Visibility="Visible" />
+                    </Grid>
+
+                    <Button Content="Add Room" Width="100" Click="btnAddRoom_Click" />
+
+                    <DataGrid x:Name="dgRooms"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              Margin="0,10,0,0"
+                              MouseDoubleClick="dgRooms_MouseDoubleClick">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Room ID" Binding="{Binding RoomID}" Width="100"/>
+                            <DataGridTextColumn Header="Room Name" Binding="{Binding RoomName}" Width="200"/>
+                            <DataGridTemplateColumn Header="Actions" Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Content="Edit" Width="50" Margin="2" Click="btnEditRoom_Click"/>
+                                            <Button Content="Delete" Width="50" Margin="2" Click="btnDeleteRoom_Click"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>
