@@ -6,12 +6,11 @@
     <Grid Margin="10">
         <TabControl>
 
-            <!-- Tab: Create Order -->
             <TabItem Header="Create Order">
                 <ScrollViewer>
                     <StackPanel Margin="10">
 
-                        <!-- Chọn Customer và Employee -->
+        
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                             <TextBlock Text="Customer:" Width="80" VerticalAlignment="Center"/>
                             <ComboBox x:Name="cbCustomer" Width="200" DisplayMemberPath="ContactName" />
@@ -19,7 +18,7 @@
                             <ComboBox x:Name="cbEmployee" Width="200" DisplayMemberPath="Name" />
                         </StackPanel>
 
-                        <!-- Chọn Product và nhập Quantity -->
+            
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                             <TextBlock Text="Product:" Width="80" VerticalAlignment="Center"/>
                             <ComboBox x:Name="cbProduct" Width="200" DisplayMemberPath="ProductName" />
@@ -28,17 +27,14 @@
                             <Button Content="Add" Click="Add_Click" Margin="20,0,0,0" Width="60"/>
                         </StackPanel>
 
-                        <!-- Danh sách sản phẩm đã thêm -->
                         <ListBox x:Name="lstOrderDetails" Height="150" Margin="0,10" />
 
-                        <!-- Nút tạo đơn hàng -->
                         <Button Content="Create Order" Click="CreateOrder_Click"
                                 HorizontalAlignment="Right" Width="120" Margin="0,10,0,0"/>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
 
-            <!-- Tab: View Orders -->
             <TabItem Header="View Orders">
                 <DataGrid x:Name="dgOrders"
                           AutoGenerateColumns="False"

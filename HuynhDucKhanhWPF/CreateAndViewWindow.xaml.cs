@@ -99,7 +99,7 @@ namespace HuynhDucKhanhWPF
                 MessageBox.Show("Order created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 ClearForm();
-                LoadOrders(); // reload lại để tính đúng TotalAmount
+                LoadOrders(); 
             }
             else
             {

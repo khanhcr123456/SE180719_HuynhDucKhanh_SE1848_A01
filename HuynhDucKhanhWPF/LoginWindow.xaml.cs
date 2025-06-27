@@ -57,7 +57,7 @@ namespace HuynhDucKhanhWPF
                 }
                 else if (employee.JobTitle == "Customer")
                 {
-                    // 🔁 Tìm customer theo Employee.Name == Customer.ContactName
+
                     var customerService = new CustomerService();
                     var customer = customerService.GetAllCustomers()
                         .FirstOrDefault(c => c.ContactName == employee.Name);
