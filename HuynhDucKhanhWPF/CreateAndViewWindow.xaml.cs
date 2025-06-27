@@ -88,12 +88,18 @@ namespace HuynhDucKhanhWPF
                     OrderDetails = orderDetails
                 };
 
+
+                foreach (var od in orderDetails)
+                {
+                    od.OrderID = newOrder.OrderID;
+                }
+
                 orderService.AddOrder(newOrder);
 
                 MessageBox.Show("Order created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 ClearForm();
-                LoadOrders();
+                LoadOrders(); // reload lại để tính đúng TotalAmount
             }
             else
             {

@@ -39,23 +39,40 @@ namespace HuynhDucKhanhWPF
         {
             string username = txtUserName.Text.Trim();
             string password = txtPassword.Password.Trim();
+
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter both username and password!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
             Employees employee = iEmployeeService.Login(username, password);
+
             if (employee != null)
             {
                 if (employee.JobTitle == "Admin")
                 {
-                    var mainWindow = new MainWindow(); mainWindow.Show(); this.Close();
+                    new MainWindow().Show();
+                    this.Close();
                 }
                 else if (employee.JobTitle == "Customer")
                 {
-                    var customerWindow = new CustomerWindow(); customerWindow.Show(); this.Close();
-                }
+                    // 🔁 Tìm customer theo Employee.Name == Customer.ContactName
+                    var customerService = new CustomerService();
+                    var customer = customerService.GetAllCustomers()
+                        .FirstOrDefault(c => c.ContactName == employee.Name);
 
+                    if (customer != null)
+                    {
+                        AppSession.CurrentCustomer = customer;
+                        new CustomerWindow().Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Customer data not found!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
             else
             {
